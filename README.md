@@ -11,7 +11,7 @@ documents, with the source file and page number cited next to it.
 
 > If the documents do not contain the answer, the assistant says so instead of guessing.
 
-![Chat interface](c:\Users\Asus\Downloads\rag-assistant-project\rag-assistant-project\docs\screenshot-chat.png.png)
+![Chat interface](docs/screenshot-chat.png)
 
 ---
 
