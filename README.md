@@ -22,6 +22,7 @@ documents, with the source file and page number cited next to it.
 - [Tech stack](#tech-stack)
 - [Project structure](#project-structure)
 - [Domain and data](#domain-and-data)
+- [Vector store schema](#vector-store-schema)
 - [Setup](#setup)
 - [Environment variables](#environment-variables)
 - [API reference](#api-reference)
@@ -112,12 +113,31 @@ digital PDFs, so text extraction needs no OCR; **14** pages were blank or image-
 The raw corpus is not committed (size and redistribution). To reproduce it, download the
 manuals listed in `docs/sources.md` into `data/raw_docs/` and run the notebook.
 
+## Vector store schema
+
+The project has no relational database. All documents live in a persisted Chroma collection:
+
+| Property | Value |
+|---|---|
+| Location | `backend/data/vector_store2/` |
+| Collection | `manuals_v2` |
+| Distance metric | Cosine |
+| Embedding model | `all-MiniLM-L6-v2` (384 dimensions) |
+| Stored per chunk | Chunk text, embedding vector, and metadata: `document` (source PDF file name) and `page` (page number) |
+
 ## Setup
 
 ### 0. Prerequisites
 
 ```bash
 python --version      # 3.10+
+```
+
+Clone the repository:
+
+```bash
+git clone https://github.com/<your-username>/rag-assistant-app.git
+cd rag-assistant-app
 ```
 
 You will also need a Groq API key (or another supported provider key) for the backend.
